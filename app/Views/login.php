@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestibiblio - Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome para el icono -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     body {
       margin: 0;
@@ -28,6 +31,13 @@
       margin: 0;
       font-size: 22px;
       font-weight: 700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px; /* espacio entre icono y texto */
+    }
+    .login-container h1 i {
+      color: #673ab7;
     }
     .login-container p {
       font-size: 14px;
@@ -70,7 +80,7 @@
 </head>
 <body>
   <div class="login-container">
-    <h1>GESTIBIBLIO</h1>
+    <h1><i class="fa-solid fa-book"></i><?php echo APP_NAME ?></h1>
     <p>Ingresa tus credenciales</p>
     <form action="<?= base_url('login/auth') ?>" method="post">
       <input type="text" name="username" placeholder="Username" required>
