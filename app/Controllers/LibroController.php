@@ -18,8 +18,8 @@ class LibroController extends BaseController
 
     public function index()
     {
-        //$data['libros'] = $this->libroModel->conCategoria();
-        return view('libros/librosListado');
+        $data['libros'] = $this->libroModel->conCategoria();
+        return view('libros/index', $data);
     }
 
     public function create()
@@ -35,15 +35,41 @@ class LibroController extends BaseController
             'autor' => $this->request->getPost('autor'),
             'editorial' => $this->request->getPost('editorial'),
             'anio' => $this->request->getPost('anio'),
-            'disponibilidad' => 1,
+            'disponibilidad' => $this->request->getPost('disponibilidad') ?? 1,
             'id_categoria' => $this->request->getPost('id_categoria'),
         ]);
         return redirect()->to('/libros');
     }
 
-    public function delete($id)
+    public function edit($id)
     {
-        $this->libroModel->delete($id);
-        return redirect()->to('/libros');
+        $data['libro'] = $this->libroModel->find($id);
+        $data['categorias'] = $this->categoriaModel->findAll();
+        return view('libros/edit', $data);
     }
+
+     public function update($id)
+    {
+        $this->libroModel->update($id, [
+            'titulo' => $this->request->getPost('titulo'),
+            'autor' => $this->request->getPost('autor'),
+            'editorial' => $this->request->getPost('editorial'),
+            'anio' => $this->request->getPost('anio'),
+            'disponibilidad' => $this->request->getPost('disponibilidad'),
+            'id_categoria' => $this->request->getPost('id_categoria'),
+        ]);
+
+        return redirect()->to(site_url('libros'));
+    }
+
+    public function delete($id)
+{
+    try {
+        $this->libroModel->delete($id);
+        return redirect()->to('/libros')->with('success', 'Libro eliminado correctamente.');
+    } catch (\Exception $e) {
+        return redirect()->to('/libros')->with('error', 'No se puede eliminar este libro porque está asociado a un préstamo.');
+    }
+}
+
 }

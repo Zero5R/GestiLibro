@@ -17,6 +17,7 @@ class UsuarioModel extends Model
     {
         return $this->join('Rol', 'Rol.id_rol = Usuario.id_rol')
                     ->select('Usuario.*, Rol.nombre as rol')
+                    ->orderBy('Usuario.id_usuario', 'DESC')
                     ->findAll();
     }
 }

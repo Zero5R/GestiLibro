@@ -3,8 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\CategoriaModel;
+use CodeIgniter\Controller;
 
-class CategoriaController extends BaseController
+class CategoriaController extends Controller
 {
     protected $categoriaModel;
 
@@ -13,9 +14,10 @@ class CategoriaController extends BaseController
         $this->categoriaModel = new CategoriaModel();
     }
 
-    public function index()
+     public function index()
     {
-        $data['categorias'] = $this->categoriaModel->findAll();
+        $model = new CategoriaModel();
+        $data['categorias'] = $model->findAll();
         return view('categorias/index', $data);
     }
 
@@ -28,8 +30,25 @@ class CategoriaController extends BaseController
     {
         $this->categoriaModel->insert([
             'nombre' => $this->request->getPost('nombre'),
-            'descripcion' => $this->request->getPost('descripcion')
+            'descripcion' => $this->request->getPost('descripcion'),
         ]);
+
+        return redirect()->to('/categorias');
+    }
+
+    public function edit($id)
+    {
+        $data['categoria'] = $this->categoriaModel->find($id);
+        return view('categorias/edit', $data);
+    }
+
+    public function update($id)
+    {
+        $this->categoriaModel->update($id, [
+            'nombre' => $this->request->getPost('nombre'),
+            'descripcion' => $this->request->getPost('descripcion'),
+        ]);
+
         return redirect()->to('/categorias');
     }
 

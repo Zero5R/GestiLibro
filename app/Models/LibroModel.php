@@ -15,7 +15,7 @@ class LibroModel extends Model
     // 🔹 Relación: Obtener libros con su categoría
     public function conCategoria()
     {
-        return $this->select('Libro.*, Categoria.nombre as categoria')
+        return $this->select('Libro.*, Categoria.nombre AS nombre_categoria')
                     ->join('Categoria', 'Categoria.id_categoria = Libro.id_categoria', 'left')
                     ->findAll();
     }

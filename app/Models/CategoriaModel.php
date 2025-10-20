@@ -10,5 +10,4 @@ class CategoriaModel extends Model
     protected $primaryKey = 'id_categoria';
     protected $allowedFields = ['nombre', 'descripcion'];
     protected $returnType = 'array';
-    protected $useTimestamps = false;
 }

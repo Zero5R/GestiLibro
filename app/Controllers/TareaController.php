@@ -42,6 +42,34 @@ class TareaController extends BaseController
         return redirect()->to('/tareas');
     }
 
+
+    public function edit($id)
+    {
+        $data['tarea'] = $this->tareaModel->find($id);
+        $data['usuarios'] = $this->usuarioModel->findAll();
+
+        if (!$data['tarea']) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("Tarea no encontrada");
+        }
+
+        return view('tareas/edit', $data);
+    }
+
+ 
+    public function update($id)
+    {
+        $this->tareaModel->update($id, [
+            'id_usuario' => $this->request->getPost('id_usuario'),
+            'titulo' => $this->request->getPost('titulo'),
+            'descripcion' => $this->request->getPost('descripcion'),
+            'fecha_vencimiento' => $this->request->getPost('fecha_vencimiento'),
+            'estado' => $this->request->getPost('estado'),
+            'prioridad' => $this->request->getPost('prioridad'),
+        ]);
+
+        return redirect()->to('/tareas');
+    }
+
     public function delete($id)
     {
         $this->tareaModel->delete($id);
