@@ -19,14 +19,16 @@ use CodeIgniter\Config\BaseService;
  */
 class Services extends BaseService
 {
-    /*
-     * public static function example($getShared = true)
-     * {
-     *     if ($getShared) {
-     *         return static::getSharedInstance('example');
-     *     }
-     *
-     *     return new \CodeIgniter\Example();
-     * }
-     */
+    public static function modelsObserverRegistry($getShared = true)
+    {
+        if ($getShared) {
+            return static::getSharedInstance('modelsObserverRegistry');
+        }
+    
+        // Lista de observadores globales
+        return [
+            \App\Observers\AuditObserver::class,
+            // \App\Observers\OtroObserver::class,
+        ];
+    }
 }

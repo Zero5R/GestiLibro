@@ -30,7 +30,7 @@
                     <div class="card text-center bg-light-blue">
                         <div class="card-body">
                             <h6>Libros Totales</h6>
-                            <h3>243</h3>
+                            <h3><?php echo $libros ?></h3>
                         </div>
                     </div>
                 </div>
@@ -39,16 +39,7 @@
                     <div class="card text-center bg-light-pink">
                         <div class="card-body">
                             <h6>Préstamos activos</h6>
-                            <h3>13</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card text-center bg-light-yellow">
-                        <div class="card-body">
-                            <h6>Devoluciones pendientes</h6>
-                            <h3>5</h3>
+                            <h3><?php echo $prestamos ?></h3>
                         </div>
                     </div>
                 </div>
@@ -57,7 +48,7 @@
                     <div class="card text-center bg-light-purple text-white">
                         <div class="card-body">
                             <h6>Usuarios</h6>
-                            <h3>15</h3>
+                            <h3><?php echo $usuarios ?></h3>
                         </div>
                     </div>
                 </div>

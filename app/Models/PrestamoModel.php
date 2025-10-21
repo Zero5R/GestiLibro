@@ -4,14 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PrestamoModel extends Model
+class PrestamoModel extends BaseModel
 {
     protected $table = 'Prestamo';
     protected $primaryKey = 'id_prestamo';
     protected $allowedFields = ['id_usuario', 'id_libro', 'fecha_prestamo', 'fecha_devolucion', 'estado'];
     protected $returnType = 'array';
     protected $useTimestamps = false;
-
+    protected $observers = [
+        \App\Observers\AuditObserver::class,
+    ];
     // 🔹 Obtener préstamos con info del usuario y libro
     public function conDetalles()
     {

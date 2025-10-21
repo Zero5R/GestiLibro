@@ -44,10 +44,12 @@
                         <td><?= esc($libro['anio']) ?></td>
                         <td><?= esc($libro['nombre_categoria'] ?? 'Sin categoría') ?></td>
                         <td>
-                            <?php if ($libro['disponibilidad']): ?>
+                            <?php if ($libro['disponibilidad'] == 'disponible'): ?>
                                 <span class="badge bg-success">Disponible</span>
-                            <?php else: ?>
+                            <?php elseif($libro['disponibilidad'] == 'no_disponible'): ?>
                                 <span class="badge bg-secondary">No disponible</span>
+                            <?php elseif($libro['disponibilidad'] == 'prestado'): ?>
+                                <span class="badge bg-warning text-dark">Prestado</span>
                             <?php endif; ?>
                         </td>
                         <td>

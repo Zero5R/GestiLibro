@@ -48,7 +48,7 @@ class LibroController extends BaseController
         return view('libros/edit', $data);
     }
 
-     public function update($id)
+    public function update($id)
     {
         $this->libroModel->update($id, [
             'titulo' => $this->request->getPost('titulo'),
@@ -63,13 +63,19 @@ class LibroController extends BaseController
     }
 
     public function delete($id)
-{
-    try {
-        $this->libroModel->delete($id);
-        return redirect()->to('/libros')->with('success', 'Libro eliminado correctamente.');
-    } catch (\Exception $e) {
-        return redirect()->to('/libros')->with('error', 'No se puede eliminar este libro porque está asociado a un préstamo.');
+    {
+        try {
+            $libro = $this->libroModel->getLibroConEstado($id);
+
+            if (!$libro) {
+                return redirect()->to('/libros')->with('error', 'Libro no encontrado.');
+            }
+            $libro->eliminar();
+
+            return redirect()->to('/libros')->with('success', 'Libro marcado como no disponible.');
+        } catch (\Exception $e) {
+            return redirect()->to('/libros')->with('error', $e->getMessage());
+        }
     }
-}
 
 }

@@ -39,8 +39,10 @@ class PrestamoController extends BaseController
             'id_libro' => $this->request->getPost('id_libro'),
             'fecha_prestamo' => $this->request->getPost('fecha_prestamo') ?? date('Y-m-d'),
             'fecha_devolucion' => $this->request->getPost('fecha_devolucion'),
-            'estado' => $this->request->getPost('estado') ?? 'prestado'
         ]);
+        $libro = $this->libroModel->getLibroConEstado($this->request->getPost('id_libro'));
+        $libro->prestar();
+
         return redirect()->to(site_url('prestamos'));
     }
 
