@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\UsuarioModel;
 use App\Libraries\AuthUser;
+use CodeIgniter\Events\Events;
+use App\Events\LoginEvent;
 
 class Login extends BaseController
 {
@@ -22,10 +24,8 @@ class Login extends BaseController
             // Guardar en Singleton
             $auth = AuthUser::getInstance();
             $auth->setUser($user);
-
-            // Guardado en sesion
-            session()->set('user', $user);
-
+            $observer = new \App\Observers\AuditObserver();
+            $observer->onUserLoggedIn($user);
             return redirect()->to('/dashboard');
         } else {
             return redirect()->back()->with('error', 'Credenciales incorrectas');

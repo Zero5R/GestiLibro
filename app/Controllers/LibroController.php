@@ -2,80 +2,75 @@
 
 namespace App\Controllers;
 
-use App\Models\LibroModel;
+use App\Repositories\LibroRepository;
 use App\Models\CategoriaModel;
 
 class LibroController extends BaseController
 {
-    protected $libroModel;
-    protected $categoriaModel;
+    protected $libros;
+    protected $categorias;
 
     public function __construct()
     {
-        $this->libroModel = new LibroModel();
-        $this->categoriaModel = new CategoriaModel();
+        $this->libros = new LibroRepository();
+        $this->categorias = new CategoriaModel();
     }
 
     public function index()
     {
-        $data['libros'] = $this->libroModel->conCategoria();
+        $data['libros'] = $this->libros->obtenerTodosConCategoria();
         return view('libros/index', $data);
     }
 
     public function create()
     {
-        $data['categorias'] = $this->categoriaModel->findAll();
+        $data['categorias'] = $this->categorias->findAll();
         return view('libros/create', $data);
     }
 
     public function store()
     {
-        $this->libroModel->insert([
+        $data = [
             'titulo' => $this->request->getPost('titulo'),
             'autor' => $this->request->getPost('autor'),
             'editorial' => $this->request->getPost('editorial'),
             'anio' => $this->request->getPost('anio'),
-            'disponibilidad' => $this->request->getPost('disponibilidad') ?? 1,
+            'disponibilidad' => $this->request->getPost('disponibilidad') ?? 'disponible',
             'id_categoria' => $this->request->getPost('id_categoria'),
-        ]);
-        return redirect()->to('/libros');
+        ];
+
+        $this->libros->crear($data);
+        return redirect()->to('/libros')->with('success', 'Libro agregado correctamente.');
     }
 
     public function edit($id)
     {
-        $data['libro'] = $this->libroModel->find($id);
-        $data['categorias'] = $this->categoriaModel->findAll();
+        $data['libro'] = $this->libros->obtenerPorId($id);
+        $data['categorias'] = $this->categorias->findAll();
         return view('libros/edit', $data);
     }
 
     public function update($id)
     {
-        $this->libroModel->update($id, [
+        $data = [
             'titulo' => $this->request->getPost('titulo'),
             'autor' => $this->request->getPost('autor'),
             'editorial' => $this->request->getPost('editorial'),
             'anio' => $this->request->getPost('anio'),
             'disponibilidad' => $this->request->getPost('disponibilidad'),
             'id_categoria' => $this->request->getPost('id_categoria'),
-        ]);
+        ];
 
-        return redirect()->to(site_url('libros'));
+        $this->libros->actualizar($id, $data);
+        return redirect()->to('/libros')->with('success', 'Libro actualizado correctamente.');
     }
 
     public function delete($id)
     {
-        try {
-            $libro = $this->libroModel->getLibroConEstado($id);
-
-            if (!$libro) {
-                return redirect()->to('/libros')->with('error', 'Libro no encontrado.');
-            }
-            $libro->eliminar();
-
+        if ($this->libros->eliminarLogico($id)) {
             return redirect()->to('/libros')->with('success', 'Libro marcado como no disponible.');
-        } catch (\Exception $e) {
-            return redirect()->to('/libros')->with('error', $e->getMessage());
         }
-    }
 
+        return redirect()->to('/libros')->with('error', 'No se pudo eliminar el libro.');
+    }
 }

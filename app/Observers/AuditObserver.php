@@ -18,4 +18,17 @@ class AuditObserver implements ObserverInterface
             'fecha'       => date('Y-m-d H:i:s'),
         ]);
     }
+
+    public static function onUserLoggedIn($user)
+    {
+        // Si usas tabla auditoría:
+        $db = \Config\Database::connect();
+        $db->table('auditorias')->insert([
+            'accion' => 'login',
+            'entidad' => 'Login',
+            'user_id' => $user['id_usuario'],
+            'fecha' => date('Y-m-d H:i:s'),
+            'detalle' => json_encode($user),
+        ]);
+    }
 }

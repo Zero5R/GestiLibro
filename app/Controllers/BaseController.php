@@ -42,6 +42,7 @@ abstract class BaseController extends Controller
      * The creation of dynamic property is deprecated in PHP 8.2.
      */
     // protected $session;
+    protected $authUserData = null;
 
     /**
      * @return void
@@ -51,6 +52,11 @@ abstract class BaseController extends Controller
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
+        $auth = \App\Libraries\AuthUser::getInstance();
+        $this->authUserData = $auth->getUser();
+        // hacer disponible para todas las vistas
+        helper('url');
+        \Config\Services::renderer()->setData(['authUser' => $this->authUserData]);
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = service('session');
