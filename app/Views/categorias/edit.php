@@ -14,7 +14,12 @@
         <textarea name="descripcion" class="form-control"><?= esc($categoria['descripcion']) ?></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary mt-2">Actualizar</button>
+    <button type="submit" class="btn btn-success">
+            <i class="fa-solid fa-save"></i> Actualizar
+        </button>
+     <a href="<?= site_url('categorias') ?>" class="btn btn-secondary">
+            <i class="fa-solid fa-arrow-left"></i> Cancelar
+        </a>
 </form>
 
 <?= $this->endSection() ?>

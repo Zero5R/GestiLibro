@@ -59,12 +59,12 @@
                 </div>
             </div>
 
-            <div class="text-end">
-                <a href="<?= site_url('tareas') ?>" class="btn btn-secondary">Cancelar</a>
-                <button type="submit" class="btn btn-primary">
-                    <i class="fa-solid fa-save me-2"></i> Actualizar
-                </button>
-            </div>
+            <button type="submit" class="btn btn-success">
+            <i class="fa-solid fa-save"></i> Actualizar
+        </button>
+        <a href="<?= site_url('prestamos') ?>" class="btn btn-secondary">
+            <i class="fa-solid fa-arrow-left"></i> Cancelar
+        </a>
         </form>
     </div>
 </div>

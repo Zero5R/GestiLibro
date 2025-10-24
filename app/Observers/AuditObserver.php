@@ -9,7 +9,7 @@ class AuditObserver implements ObserverInterface
     public function handle(string $evento, array $payload): void
     {   
         $db = \Config\Database::connect();
-        $db->table('auditorias')->insert([
+        $db->table('auditoria')->insert([
             'entidad'     => $payload['model'],
             'entidad_id'  => $payload['id'] ?? null,
             'accion'      => $evento,
@@ -23,7 +23,7 @@ class AuditObserver implements ObserverInterface
     {
         // Si usas tabla auditoría:
         $db = \Config\Database::connect();
-        $db->table('auditorias')->insert([
+        $db->table('auditoria')->insert([
             'accion' => 'login',
             'entidad' => 'Login',
             'user_id' => $user['id_usuario'],

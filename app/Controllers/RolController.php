@@ -32,6 +32,21 @@ class RolController extends BaseController
         return redirect()->to('/roles');
     }
 
+
+    public function edit($id)
+    {
+        $data['rol'] = $this->rolModel->find($id);
+        return view('roles/edit', $data);
+    }
+
+    public function update($id)
+    {
+        $this->rolModel->update($id, [
+        'nombre' => $this->request->getPost('nombre')
+    ]);
+        return redirect()->to('/roles');
+    }
+
     public function delete($id)
     {
         $this->rolModel->delete($id);

@@ -16,12 +16,22 @@
             <li class="nav-item mb-2"><a href="<?= base_url('usuarios') ?>"
                     class="nav-link d-flex align-items-center"><i class="fa-solid fa-user me-2"></i>
                     <span>Usuarios</span></a>
+
+        <li class="nav-item mb-2">
+    <a href="<?= site_url('roles') ?>" class="nav-link">
+        <i class="fa-solid fa-user-gear me-2"></i> Roles
+    </a>
+</li>
+
+
             <li class="nav-item mb-2"><a href="<?= site_url('libros') ?>" class="nav-link"><i
                         class="fa-solid fa-book-open me-2"></i> Libros</a></li>
             <li class="nav-item mb-2"><a href="<?= site_url('categorias') ?>" class="nav-link"><i
                         class="fa-solid fa-tags me-2"></i> Categorías</a></li>
             <li class="nav-item mb-2"><a href="<?= site_url('prestamos') ?>" class="nav-link"><i
                         class="fa-solid fa-handshake me-2"></i> Préstamos</a></li>
+            <li class="nav-item"><a class="nav-link" href="<?= base_url('auditoria') ?>"><i 
+                        class="fa-solid fa-shield-halved me-2"></i> Auditoría</a></li>
             <li class="nav-item mb-2"><a href="<?= site_url('tareas') ?>"
                     class="nav-link d-flex align-items-center text-dark"><i
                         class="fa-solid fa-list-check me-2"></i><span>Gestión de Tareas</span></a>

@@ -12,6 +12,16 @@ $routes->post('/login/auth', 'Login::auth');
 $routes->get('/dashboard', 'DashboardController::index');
 
 
+$routes->get('roles', 'RolController::index');
+$routes->get('roles/create', 'RolController::create');
+$routes->post('roles/store', 'RolController::store');
+$routes->get('roles/edit/(:num)', 'RolController::edit/$1');
+$routes->post('roles/update/(:num)', 'RolController::update/$1');
+$routes->get('roles/delete/(:num)', 'RolController::delete/$1');
+
+
+$routes->get('auditoria', 'AuditoriaController::index');
+
 
 $routes->group('tareas', ['namespace' => 'App\Controllers'], function($routes) {
     $routes->get('/', 'TareaController::index');
