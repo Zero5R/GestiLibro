@@ -10,10 +10,6 @@
 </head>
 
 <body>
-    <?php
-    $user = session()->get('user');
-    $nombreCompleto = esc($user['nombre']) . ' ' . esc($user['apellido']);
-    ?>
 
     <div class="d-flex">
         <!-- Sidebar -->
