@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\PrestamoModel;
 use App\Models\UsuarioModel;
 use App\Models\LibroModel;
+use App\Libraries\AuthUser;
 
 class PrestamoController extends BaseController
 {
@@ -22,6 +23,10 @@ class PrestamoController extends BaseController
     public function index()
     {
         $data['prestamos'] = $this->prestamoModel->conDetalles();
+        $data['librosDisponibles'] = $this->libroModel
+            ->where('disponibilidad', 'disponible')
+            ->findAll();
+        $data['user'] = AuthUser::getInstance();
         return view('prestamos/index', $data);
     }
 

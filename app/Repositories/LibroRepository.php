@@ -13,9 +13,9 @@ class LibroRepository
         $this->model = new LibroModel();
     }
 
-    public function obtenerTodosConCategoria(): array
+    public function obtenerTodosConCategoria($disponibilidad): array
     {
-        return $this->model->conCategoria();
+        return $this->model->conCategoria($disponibilidad);
     }
 
     public function obtenerPorId(int $id): ?array

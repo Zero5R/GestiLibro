@@ -75,7 +75,7 @@ class Builder extends BaseBuilder
             }
 
             if (is_float($orderBy)) {
-                $this->->simpleQuery("SET SEED {$orderBy}");
+                $this->db->simpleQuery("SET SEED {$orderBy}");
             }
 
             $orderBy   = $this->randomKeyword[0];

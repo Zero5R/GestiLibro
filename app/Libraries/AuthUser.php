@@ -28,9 +28,9 @@ class AuthUser
     public function setUser(array $data)
     {
         $this->userData = [
-            'id' => $data['id_usuario'] ?? null,
-            'email' => $data['correo'] ?? null,
-            'rol' => $data['id_rol'] ?? [],
+            'id_usuario' => $data['id_usuario'] ?? null,
+            'correo' => $data['correo'] ?? null,
+            'id_rol' => $data['id_rol'] ?? [],
             'nombreCompleto' => $data['nombre'].' '.$data['apellido'] ?? null,
         ];
         $this->session->set($this->key, $this->userData);

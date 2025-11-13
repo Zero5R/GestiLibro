@@ -19,12 +19,17 @@ class AuditObserver implements ObserverInterface
         ]);
     }
 
-    public static function onUserLoggedIn($user)
+    public static function onUserLoggedIn($user,$logout=null)
     {
+        $accion = 'login';
         // Si usas tabla auditoría:
+        if($logout){
+            $accion = 'logout';
+        }
+        
         $db = \Config\Database::connect();
         $db->table('auditoria')->insert([
-            'accion' => 'login',
+            'accion' => $accion,
             'entidad' => 'Login',
             'user_id' => $user['id_usuario'],
             'fecha' => date('Y-m-d H:i:s'),

@@ -21,6 +21,11 @@
         </div>
 
         <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="username" id="username" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
             <label for="contrasena" class="form-label">Contraseña</label>
             <input type="password" name="contrasena" id="contrasena" class="form-control" required>
         </div>

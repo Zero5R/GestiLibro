@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Repositories\LibroRepository;
 use App\Models\CategoriaModel;
+use App\Libraries\AuthUser;
 
 class LibroController extends BaseController
 {
@@ -18,7 +19,11 @@ class LibroController extends BaseController
 
     public function index()
     {
-        $data['libros'] = $this->libros->obtenerTodosConCategoria();
+        $disponibilidad = $this->request->getGet('disponibilidad');
+        $data['libros'] = $this->libros->obtenerTodosConCategoria($disponibilidad);
+        $data['categoryExist'] = $this->categorias->findAll();
+        $data['user'] = AuthUser::getInstance();
+
         return view('libros/index', $data);
     }
 

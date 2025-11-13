@@ -36,6 +36,7 @@ class UsuarioController extends BaseController
             'correo' => $this->request->getPost('correo'),
             'contrasena' => password_hash($this->request->getPost('contrasena'), PASSWORD_DEFAULT),
             'id_rol' => $this->request->getPost('id_rol'),
+            'username'=> $this->request->getPost('username'),
         ]);
         return redirect()->to('/usuarios')->with('success', 'Usuario registrado correctamente.');
     }

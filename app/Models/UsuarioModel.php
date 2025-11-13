@@ -8,7 +8,7 @@ class UsuarioModel extends BaseModel
 {
     protected $table = 'Usuario';
     protected $primaryKey = 'id_usuario';
-    protected $allowedFields = ['nombre', 'apellido', 'correo', 'contrasena', 'id_rol'];
+    protected $allowedFields = ['nombre', 'apellido', 'correo', 'contrasena', 'id_rol','username'];
     protected $returnType = 'array';
     protected $useTimestamps = false;
     protected $observers = [

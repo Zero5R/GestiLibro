@@ -1,15 +1,24 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
-
+<?php
+    $user1 = $user->getUser();
+?> 
 <div class="container ">
     <h4 class="fw-bold mb-3"><i class="fa-solid fa-users me-2"></i> Gestión de Préstamos</h4>
-  
-    <div class="mb-4">
-      <a href="<?= site_url('prestamos/create') ?>" class="btn btn-success">
-        <i class="fa-solid fa-handshake me-2"></i> Nuevo Préstamo
-      </a>
-    </div>
 
+    <?php if ($librosDisponibles && $user1['id_rol'] ==1 ): ?>
+        <div class="mb-4">
+            <a href="<?= site_url('prestamos/create') ?>" class="btn btn-success">
+                <i class="fa-solid fa-handshake me-2"></i> Nuevo Préstamo
+            </a>
+        </div>
+    <?php elseif ($user1['id_rol']==1): ?>
+        <div class="alert alert-warning" role="alert">
+            <i class="fa-solid fa-triangle-exclamation me-2"></i>
+            No es posible crear prestamos sin libros disponibles
+        </div>
+    <?php endif; ?>
+    </div>
     <table class="table table-striped table-hover">
         <thead class="table-dark">
             <tr>

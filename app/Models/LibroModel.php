@@ -34,10 +34,12 @@ class LibroModel extends BaseModel
         \App\Observers\AuditObserver::class,
     ];
     // Obtener libros con su categoría
-    public function conCategoria()
+    public function conCategoria($disponibilidad = 'disponible')
     {
-        return $this->select('Libro.*, Categoria.nombre AS nombre_categoria')
-                    ->join('Categoria', 'Categoria.id_categoria = Libro.id_categoria', 'left')
-                    ->findAll();
+        $query = $this->select('Libro.*, Categoria.nombre AS nombre_categoria')
+                      ->join('Categoria', 'Categoria.id_categoria = Libro.id_categoria', 'left')
+                      ->where('libro.disponibilidad', $disponibilidad);
+
+        return $query->findAll();
     }
 }
