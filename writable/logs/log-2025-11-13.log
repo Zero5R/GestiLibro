@@ -1,0 +1,276 @@
+DEBUG - 2025-11-13 04:59:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-13 04:59:03 --> mysqli_sql_exception: Table 'biblioteca_db.auditoria' doesn't exist in C:\xampp\htdocs\GestiLibro\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\GestiLibro\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `au...', 0)
+#1 C:\xampp\htdocs\GestiLibro\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `au...')
+#2 C:\xampp\htdocs\GestiLibro\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `au...')
+#3 C:\xampp\htdocs\GestiLibro\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `au...', Array, false)
+#4 C:\xampp\htdocs\GestiLibro\app\Observers\AuditObserver.php(26): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\GestiLibro\app\Controllers\Login.php(28): App\Observers\AuditObserver::onUserLoggedIn(Array)
+#6 C:\xampp\htdocs\GestiLibro\system\CodeIgniter.php(933): App\Controllers\Login->auth()
+#7 C:\xampp\htdocs\GestiLibro\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\GestiLibro\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\GestiLibro\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\GestiLibro\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\GestiLibro\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-11-13 04:59:03 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'biblioteca_db.auditoria' doesn't exist
+[Method: POST, Route: login/auth]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `auditoria` (`accion`, `entidad`, `user_id`, `fecha`, `detalle`) VALUES (:accion:, :entidad:, :user_id:, :fecha:, :detalle:)', [...], false)
+ 2 APPPATH\Observers\AuditObserver.php(26): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Login.php(28): App\Observers\AuditObserver::onUserLoggedIn([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-13 04:59:03 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'biblioteca_db.auditoria' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `auditoria` (`accion`, `entidad`, `user_id`, `fecha`, `detalle`) VALUES (\'login\', \'Login\', \'1\', \'2025-11-13 04:59:03\', \'{\\"id_usuario\\":\\"1\\",\\"nombre\\":\\"Jhon\\",\\"apellido\\":\\"Martinez\\",\\"correo\\":\\"jhonjairomartinezforero@gmail.com\\",\\"contrasena\\":\\"jhon\\",\\"id_rol\\":\\"1\\",\\"username\\":\\"admin\\"}\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `auditoria` (`accion`, `entidad`, `user_id`, `fecha`, `detalle`) VALUES (\'login\', \'Login\', \'1\', \'2025-11-13 04:59:03\', \'{\\"id_usuario\\":\\"1\\",\\"nombre\\":\\"Jhon\\",\\"apellido\\":\\"Martinez\\",\\"correo\\":\\"jhonjairomartinezforero@gmail.com\\",\\"contrasena\\":\\"jhon\\",\\"id_rol\\":\\"1\\",\\"username\\":\\"admin\\"}\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `auditoria` (`accion`, `entidad`, `user_id`, `fecha`, `detalle`) VALUES (:accion:, :entidad:, :user_id:, :fecha:, :detalle:)', [...], false)
+ 4 APPPATH\Observers\AuditObserver.php(26): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Login.php(28): App\Observers\AuditObserver::onUserLoggedIn([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-13 04:59:03 --> [Caused by] mysqli_sql_exception: Table 'biblioteca_db.auditoria' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `auditoria` (`accion`, `entidad`, `user_id`, `fecha`, `detalle`) VALUES (\'login\', \'Login\', \'1\', \'2025-11-13 04:59:03\', \'{\\"id_usuario\\":\\"1\\",\\"nombre\\":\\"Jhon\\",\\"apellido\\":\\"Martinez\\",\\"correo\\":\\"jhonjairomartinezforero@gmail.com\\",\\"contrasena\\":\\"jhon\\",\\"id_rol\\":\\"1\\",\\"username\\":\\"admin\\"}\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `auditoria` (`accion`, `entidad`, `user_id`, `fecha`, `detalle`) VALUES (\'login\', \'Login\', \'1\', \'2025-11-13 04:59:03\', \'{\\"id_usuario\\":\\"1\\",\\"nombre\\":\\"Jhon\\",\\"apellido\\":\\"Martinez\\",\\"correo\\":\\"jhonjairomartinezforero@gmail.com\\",\\"contrasena\\":\\"jhon\\",\\"id_rol\\":\\"1\\",\\"username\\":\\"admin\\"}\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `auditoria` (`accion`, `entidad`, `user_id`, `fecha`, `detalle`) VALUES (\'login\', \'Login\', \'1\', \'2025-11-13 04:59:03\', \'{\\"id_usuario\\":\\"1\\",\\"nombre\\":\\"Jhon\\",\\"apellido\\":\\"Martinez\\",\\"correo\\":\\"jhonjairomartinezforero@gmail.com\\",\\"contrasena\\":\\"jhon\\",\\"id_rol\\":\\"1\\",\\"username\\":\\"admin\\"}\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `auditoria` (`accion`, `entidad`, `user_id`, `fecha`, `detalle`) VALUES (:accion:, :entidad:, :user_id:, :fecha:, :detalle:)', [...], false)
+ 5 APPPATH\Observers\AuditObserver.php(26): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Login.php(28): App\Observers\AuditObserver::onUserLoggedIn([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-13 05:00:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:00:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:00:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:00:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:00:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:00:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:00:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:00:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:00:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:00:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:01:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:03:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:03:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:03:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:03:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:03:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:03:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:03:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:03:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:03:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:03:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:03:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:03:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:04:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:04:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:04:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:04:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:05:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:05:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:05:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:06:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:06:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:17:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:17:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:17:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-13 05:17:31 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`biblioteca_db`.`libro`, CONSTRAINT `libro_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE SET NULL ON UPDATE CASCADE) in C:\xampp\htdocs\GestiLibro\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\GestiLibro\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `Li...', 0)
+#1 C:\xampp\htdocs\GestiLibro\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `Li...')
+#2 C:\xampp\htdocs\GestiLibro\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `Li...')
+#3 C:\xampp\htdocs\GestiLibro\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `Li...', Array, false)
+#4 C:\xampp\htdocs\GestiLibro\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\GestiLibro\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\GestiLibro\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\GestiLibro\app\Repositories\LibroRepository.php(33): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\GestiLibro\app\Controllers\LibroController.php(42): App\Repositories\LibroRepository->crear(Array)
+#9 C:\xampp\htdocs\GestiLibro\system\CodeIgniter.php(933): App\Controllers\LibroController->store()
+#10 C:\xampp\htdocs\GestiLibro\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+#11 C:\xampp\htdocs\GestiLibro\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\GestiLibro\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\GestiLibro\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\GestiLibro\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-11-13 05:17:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`biblioteca_db`.`libro`, CONSTRAINT `libro_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE SET NULL ON UPDATE CASCADE)
+[Method: POST, Route: libros/store]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (:titulo:, :autor:, :editorial:, :anio:, :disponibilidad:, :id_categoria:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Repositories\LibroRepository.php(33): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\LibroController.php(42): App\Repositories\LibroRepository->crear([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LibroController->store()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-13 05:17:31 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`biblioteca_db`.`libro`, CONSTRAINT `libro_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE SET NULL ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (\'ARJONA\', \'González, M.\', \'caracas\', \'2019\', \'disponible\', \'\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (\'ARJONA\', \'González, M.\', \'caracas\', \'2019\', \'disponible\', \'\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (:titulo:, :autor:, :editorial:, :anio:, :disponibilidad:, :id_categoria:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Repositories\LibroRepository.php(33): CodeIgniter\Model->insert([...])
+ 8 APPPATH\Controllers\LibroController.php(42): App\Repositories\LibroRepository->crear([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LibroController->store()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-13 05:17:31 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`biblioteca_db`.`libro`, CONSTRAINT `libro_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE SET NULL ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (\'ARJONA\', \'González, M.\', \'caracas\', \'2019\', \'disponible\', \'\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (\'ARJONA\', \'González, M.\', \'caracas\', \'2019\', \'disponible\', \'\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (\'ARJONA\', \'González, M.\', \'caracas\', \'2019\', \'disponible\', \'\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (:titulo:, :autor:, :editorial:, :anio:, :disponibilidad:, :id_categoria:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Repositories\LibroRepository.php(33): CodeIgniter\Model->insert([...])
+ 9 APPPATH\Controllers\LibroController.php(42): App\Repositories\LibroRepository->crear([...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LibroController->store()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-13 05:17:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:17:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:17:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:17:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:17:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:17:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:17:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-13 05:18:43 --> Exception: El libro 'Pinocho' ya está marcado como no disponible.
+[Method: GET, Route: libros/delete/2]
+in APPPATH\Models\States\NoDisponibleState.php on line 9.
+ 1 APPPATH\Models\States\LibroContext.php(45): App\Models\States\NoDisponibleState->eliminar(Object(App\Models\States\LibroContext))
+ 2 APPPATH\Repositories\LibroRepository.php(47): App\Models\States\LibroContext->eliminar()
+ 3 APPPATH\Controllers\LibroController.php(70): App\Repositories\LibroRepository->eliminarLogico(2)
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LibroController->delete('2')
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-13 05:18:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:18:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:19:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:19:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:19:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:20:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:20:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:20:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:20:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:20:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-13 05:20:23 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`biblioteca_db`.`libro`, CONSTRAINT `libro_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE SET NULL ON UPDATE CASCADE) in C:\xampp\htdocs\GestiLibro\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\GestiLibro\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `Li...', 0)
+#1 C:\xampp\htdocs\GestiLibro\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `Li...')
+#2 C:\xampp\htdocs\GestiLibro\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `Li...')
+#3 C:\xampp\htdocs\GestiLibro\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `Li...', Array, false)
+#4 C:\xampp\htdocs\GestiLibro\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\GestiLibro\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\GestiLibro\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\GestiLibro\app\Repositories\LibroRepository.php(33): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\GestiLibro\app\Controllers\LibroController.php(42): App\Repositories\LibroRepository->crear(Array)
+#9 C:\xampp\htdocs\GestiLibro\system\CodeIgniter.php(933): App\Controllers\LibroController->store()
+#10 C:\xampp\htdocs\GestiLibro\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+#11 C:\xampp\htdocs\GestiLibro\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\GestiLibro\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\GestiLibro\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\GestiLibro\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-11-13 05:20:23 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`biblioteca_db`.`libro`, CONSTRAINT `libro_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE SET NULL ON UPDATE CASCADE)
+[Method: POST, Route: libros/store]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (:titulo:, :autor:, :editorial:, :anio:, :disponibilidad:, :id_categoria:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Repositories\LibroRepository.php(33): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\LibroController.php(42): App\Repositories\LibroRepository->crear([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LibroController->store()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-13 05:20:23 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`biblioteca_db`.`libro`, CONSTRAINT `libro_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE SET NULL ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (\'miauu\', \'González, M.\', \'1\', \'2019\', \'disponible\', \'\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (\'miauu\', \'González, M.\', \'1\', \'2019\', \'disponible\', \'\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (:titulo:, :autor:, :editorial:, :anio:, :disponibilidad:, :id_categoria:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Repositories\LibroRepository.php(33): CodeIgniter\Model->insert([...])
+ 8 APPPATH\Controllers\LibroController.php(42): App\Repositories\LibroRepository->crear([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LibroController->store()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-13 05:20:23 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`biblioteca_db`.`libro`, CONSTRAINT `libro_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE SET NULL ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (\'miauu\', \'González, M.\', \'1\', \'2019\', \'disponible\', \'\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (\'miauu\', \'González, M.\', \'1\', \'2019\', \'disponible\', \'\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (\'miauu\', \'González, M.\', \'1\', \'2019\', \'disponible\', \'\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `Libro` (`titulo`, `autor`, `editorial`, `anio`, `disponibilidad`, `id_categoria`) VALUES (:titulo:, :autor:, :editorial:, :anio:, :disponibilidad:, :id_categoria:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Repositories\LibroRepository.php(33): CodeIgniter\Model->insert([...])
+ 9 APPPATH\Controllers\LibroController.php(42): App\Repositories\LibroRepository->crear([...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LibroController->store()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-13 05:20:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:21:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:21:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:21:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:23:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:24:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:24:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:24:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-13 05:25:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

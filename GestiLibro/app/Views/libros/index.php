@@ -13,12 +13,12 @@
 
 
 <div class="container ">
-    <h4 class="fw-bold mb-3"><i class="fa-solid fa-book me-2 "></i> Gestión de Libros</h4>
+    <h4 class="fw-bold mb-3"><i class="fa-solid fa-book me-2 "></i> Gestión de Librosssss</h4>
 
     <div class="mb-4">
     <?php if ($categoryExist && $user1['id_rol']==1): ?>
         <a href="<?= site_url('libros/create') ?>" class="btn btn-success">
-            <i class="fa-solid fa-book-medical me-2"></i> Nuevo Libro
+            <i class="fa-solid fa-book-medical me-2"></i> Nuevo Libros
         </a>
     <?php elseif ($user1['id_rol']==1): ?>
         <div class="alert alert-warning" role="alert">
