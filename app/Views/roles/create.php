@@ -7,7 +7,10 @@
     <form action="<?= site_url('roles/store') ?>" method="post">
         <div class="mb-3">
             <label class="form-label">Nombre del Rol</label>
-            <input type="text" name="nombre" class="form-control" required>
+            <input type="text" name="nombre" class="form-control" value="<?= old('nombre') ?>">
+            <?php if (isset($validation)) : ?>
+                <div class="text-danger"><?= $validation->showError('nombre') ?></div>
+            <?php endif; ?>
         </div>
 
         <a href="<?= site_url('roles') ?>" class="btn btn-secondary">Cancelar</a>

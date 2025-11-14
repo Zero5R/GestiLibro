@@ -4,22 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TareaModel extends BaseModel
+class TareaModel extends Model
 {
     protected $table = 'Tarea';
     protected $primaryKey = 'id_tarea';
     protected $allowedFields = [
-        'id_usuario', 'titulo', 'descripcion', 
-        'fecha_creacion', 'fecha_vencimiento', 
+        'id_usuario', 'titulo', 'descripcion',
+        'fecha_creacion', 'fecha_vencimiento',
         'estado', 'prioridad'
     ];
     protected $returnType = 'array';
-    protected $useTimestamps = false;
 
-    protected $observers = [
-        \App\Observers\AuditObserver::class,
-    ];
-    // 🔹 Obtener tareas con info del usuario
     public function conUsuario()
     {
         return $this->select('Tarea.*, Usuario.nombre as usuario')

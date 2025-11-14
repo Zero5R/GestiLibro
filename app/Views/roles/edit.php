@@ -7,7 +7,10 @@
     <form action="<?= site_url('roles/update/'.$rol['id_rol']) ?>" method="post">
         <div class="mb-3">
             <label class="form-label">Nombre del Rol</label>
-            <input type="text" name="nombre" class="form-control" value="<?= esc($rol['nombre']) ?>" required>
+            <input type="text" name="nombre" class="form-control" value="<?= old('nombre', esc($rol['nombre'])) ?>">
+            <?php if (isset($validation)) : ?>
+                <div class="text-danger"><?= $validation->showError('nombre') ?></div>
+            <?php endif; ?>
         </div>
 
         <button type="submit" class="btn btn-success">

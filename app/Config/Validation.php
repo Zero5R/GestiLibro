@@ -7,38 +7,34 @@ use CodeIgniter\Validation\StrictRules\CreditCardRules;
 use CodeIgniter\Validation\StrictRules\FileRules;
 use CodeIgniter\Validation\StrictRules\FormatRules;
 use CodeIgniter\Validation\StrictRules\Rules;
+use App\Validation\CustomRules; 
+
 
 class Validation extends BaseConfig
 {
-    // --------------------------------------------------------------------
-    // Setup
-    // --------------------------------------------------------------------
-
-    /**
-     * Stores the classes that contain the
-     * rules that are available.
-     *
-     * @var list<string>
-     */
     public array $ruleSets = [
         Rules::class,
         FormatRules::class,
         FileRules::class,
         CreditCardRules::class,
+        \App\Validation\CustomRules::class, 
     ];
 
-    /**
-     * Specifies the views that are used to display the
-     * errors.
-     *
-     * @var array<string, string>
-     */
     public array $templates = [
         'list'   => 'CodeIgniter\Validation\Views\list',
         'single' => 'CodeIgniter\Validation\Views\single',
     ];
 
-    // --------------------------------------------------------------------
-    // Rules
-    // --------------------------------------------------------------------
+    public array $rules = [];
+
+public array $messages = [
+    'tareas' => [
+        'fecha_vencimiento' => [
+            'valid_date' => 'La fecha no es válida.',
+            'date_not_past' => 'La fecha debe ser posterior a hoy.',
+            'date_not_too_far' => 'La fecha no puede ser superior a 5 años desde hoy.',
+        ],
+    ],
+];
+
 }

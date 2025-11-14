@@ -14,7 +14,7 @@ class CategoriaController extends Controller
         $this->categoriaModel = new CategoriaModel();
     }
 
-     public function index()
+    public function index()
     {
         $model = new CategoriaModel();
         $data['categorias'] = $model->findAll();
@@ -28,12 +28,16 @@ class CategoriaController extends Controller
 
     public function store()
     {
-        $this->categoriaModel->insert([
+        $data = [
             'nombre' => $this->request->getPost('nombre'),
             'descripcion' => $this->request->getPost('descripcion'),
-        ]);
+        ];
 
-        return redirect()->to('/categorias');
+        if (! $this->categoriaModel->insert($data)) {
+            return redirect()->back()->withInput()->with('errors', $this->categoriaModel->errors());
+        }
+
+        return redirect()->to('/categorias')->with('success', 'Categoría creada correctamente.');
     }
 
     public function edit($id)
@@ -44,17 +48,45 @@ class CategoriaController extends Controller
 
     public function update($id)
     {
-        $this->categoriaModel->update($id, [
-            'nombre' => $this->request->getPost('nombre'),
-            'descripcion' => $this->request->getPost('descripcion'),
-        ]);
+        $data = [
+            'id_categoria' => $id,
+            'nombre'       => $this->request->getPost('nombre'),
+            'descripcion'  => $this->request->getPost('descripcion'),
+        ];
 
-        return redirect()->to('/categorias');
+        if (! $this->categoriaModel->save($data)) {
+            return redirect()->back()->withInput()->with('errors', $this->categoriaModel->errors());
+        }
+
+        return redirect()->to('/categorias')->with('success', 'Categoría actualizada correctamente.');
     }
 
     public function delete($id)
     {
+        $db = \Config\Database::connect();
+
+        // Verificar si hay libros asociados
+        $libros = $db->table('Libro')->where('id_categoria', $id)->countAllResults();
+
+        if ($libros > 0) {
+            return redirect()->to('/categorias')
+                ->with('error', 'No se puede eliminar la categoría porque tiene libros asociados.');
+        }
+
+        // Verificar préstamos asociados mediante libros
+        $prestamos = $db->table('Prestamo')
+            ->join('Libro', 'Libro.id_libro = Prestamo.id_libro')
+            ->where('Libro.id_categoria', $id)
+            ->countAllResults();
+
+        if ($prestamos > 0) {
+            return redirect()->to('/categorias')
+                ->with('error', 'No se puede eliminar la categoría porque tiene préstamos asociados.');
+        }
+
+        // Eliminar si no tiene relaciones
         $this->categoriaModel->delete($id);
-        return redirect()->to('/categorias');
+
+        return redirect()->to('/categorias')->with('success', 'Categoría eliminada correctamente.');
     }
 }

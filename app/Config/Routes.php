@@ -12,7 +12,7 @@ $routes->post('/login/auth', 'Login::auth');
 $routes->get('/dashboard', 'DashboardController::index');
 $routes->get('/login/logout', 'Login::logout');
 
-$routes->group('roles', ['filter' => 'auth'], ['namespace' => 'App\Controllers'], function($routes) {
+$routes->group('roles',['filter' => 'auth'],  ['namespace' => 'App\Controllers'], function($routes) {
     $routes->get('/', 'RolController::index');
     $routes->get('create', 'RolController::create');
     $routes->post('store', 'RolController::store');
@@ -25,7 +25,7 @@ $routes->group('auditoria', ['filter' => 'auth'], ['namespace' => 'App\Controlle
     $routes->get('/', 'AuditoriaController::index');
 });
 
-$routes->group('tareas', ['filter' => 'auth'], ['namespace' => 'App\Controllers'], function($routes) {
+$routes->group('tareas',['filter' => 'auth'], ['namespace' => 'App\Controllers'], function($routes) {
     $routes->get('/', 'TareaController::index');
     $routes->get('create', 'TareaController::create');
     $routes->post('store', 'TareaController::store');
@@ -34,7 +34,7 @@ $routes->group('tareas', ['filter' => 'auth'], ['namespace' => 'App\Controllers'
     $routes->get('delete/(:num)', 'TareaController::delete/$1');
 });
 
-$routes->group('usuarios', ['filter' => 'auth'], ['namespace' => 'App\Controllers'], function($routes) {
+$routes->group('usuarios',['filter' => 'auth'], ['namespace' => 'App\Controllers'], function($routes) {
     $routes->get('/', 'UsuarioController::index');                 
     $routes->get('create', 'UsuarioController::create');           
     $routes->post('store', 'UsuarioController::store');            
@@ -43,7 +43,7 @@ $routes->group('usuarios', ['filter' => 'auth'], ['namespace' => 'App\Controller
     $routes->get('delete/(:num)', 'UsuarioController::delete/$1'); 
 });
 
-$routes->group('categorias', ['filter' => 'auth'], ['namespace' => 'App\Controllers'], function($routes) {
+$routes->group('categorias',['filter' => 'auth'],  ['namespace' => 'App\Controllers'], function($routes) {
     $routes->get('/', 'CategoriaController::index');
     $routes->get('create', 'CategoriaController::create');
     $routes->post('store', 'CategoriaController::store');

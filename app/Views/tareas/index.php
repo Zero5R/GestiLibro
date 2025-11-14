@@ -2,18 +2,28 @@
 
 <?= $this->section('content') ?>
 <div class="container">
+
     <h4 class="fw-bold mb-3">
         <i class="fa-solid fa-list-check me-2"></i> Gestión de Tareas
     </h4>
 
+    <!-- MENSAJES -->
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success"><?= session('success') ?></div>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger"><?= session('error') ?></div>
+    <?php endif; ?>
+
     <div class="mb-4">
         <a href="<?= site_url('tareas/create') ?>" class="btn btn-success">
-            <i class="fa-solid fa-square-plus me-2"></i> Nueva Tarea
+            <i class="fa-solid fa-plus"></i> Nueva Tarea
         </a>
     </div>
 
     <div class="table-responsive bg-white rounded shadow-sm p-3">
-        <table class="table align-middle">
+        <table class="table table-bordered align-middle">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
@@ -24,9 +34,10 @@
                     <th>Fecha Vencimiento</th>
                     <th>Estado</th>
                     <th>Prioridad</th>
-                    <th class="text-center">Acciones</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
+
             <tbody>
                 <?php if (!empty($tareas)): ?>
                     <?php foreach ($tareas as $t): ?>
@@ -40,9 +51,8 @@
 
                             <td>
                                 <span class="badge bg-<?= 
-                                    $t['estado'] == 'pendiente' ? 'warning text-dark' : 
-                                    ($t['estado'] == 'en progreso' ? 'info text-dark' : 'success') 
-                                ?>">
+                                    $t['estado'] == 'pendiente' ? 'warning text-dark' :
+                                    ($t['estado'] == 'en progreso' ? 'info text-dark' : 'success') ?>">
                                     <?= ucfirst($t['estado']) ?>
                                 </span>
                             </td>
@@ -50,20 +60,20 @@
                             <td>
                                 <span class="badge bg-<?= 
                                     $t['prioridad'] == 'alta' ? 'danger' :
-                                    ($t['prioridad'] == 'media' ? 'warning text-dark' : 'success')
-                                ?>">
+                                    ($t['prioridad'] == 'media' ? 'warning text-dark' : 'success') ?>">
                                     <?= ucfirst($t['prioridad']) ?>
                                 </span>
                             </td>
 
                             <td class="text-center">
-                                <a href="<?= site_url('tareas/edit/' . $t['id_tarea']) ?>" class="btn btn-sm btn-info">
-                                    <i class="fa-solid fa-pen-to-square"></i>
+                                <a href="<?= site_url('tareas/edit/'.$t['id_tarea']) ?>" class="btn btn-sm btn-info">
+                                    <i class="fa-solid fa-pen"></i>
                                 </a>
-                                <a href="<?= site_url('tareas/delete/' . $t['id_tarea']) ?>" 
-                                   onclick="return confirm('¿Seguro que deseas eliminar esta tarea?')" 
+
+                                <a href="<?= site_url('tareas/delete/'.$t['id_tarea']) ?>"
+                                   onclick="return confirm('¿Seguro que deseas eliminar esta tarea?')"
                                    class="btn btn-sm btn-danger">
-                                    <i class="fa-solid fa-trash"></i>
+                                   <i class="fa-solid fa-trash"></i>
                                 </a>
                             </td>
                         </tr>
@@ -76,5 +86,6 @@
             </tbody>
         </table>
     </div>
+
 </div>
 <?= $this->endSection() ?>
